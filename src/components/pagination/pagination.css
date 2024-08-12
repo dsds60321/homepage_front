@@ -1,0 +1,40 @@
+/* pagination.css */
+.pagination {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    margin: 20px 0; /* 위 아래 여백 추가 */
+}
+
+.page-item {
+    margin: 0 5px; /* 페이지 아이템 간의 여백 */
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.page-link {
+    padding: 10px 15px; /* 패딩 추가 */
+    border: 1px solid #007bff; /* 테두리 색상 */
+    color: #007bff; /* 글자 색상 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
+}
+
+.page-link:hover {
+    background-color: #007bff; /* 마우스 오버 시 배경색 변경 */
+    color: white; /* 마우스 오버 시 글자색 변경 */
+}
+
+.active .page-link {
+    background-color: #007bff; /* 활성 페이지 배경색 */
+    color: white; /* 활성 페이지 글자색 */
+    pointer-events: none; /* 활성 페이지 클릭 방지 */
+}
+
+.break {
+    padding: 10px; /* 페이지 구분 기호에 패딩 추가 */
+    color: #007bff; /* 색상 설정 */
+}
