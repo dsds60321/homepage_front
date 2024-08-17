@@ -14,7 +14,6 @@ export default function Breadcrumbs({ navigation, title, ...others }) {
     const location = useLocation();
     const [main, setMain] = useState();
     const [item, setItem] = useState();
-    console.log(main);
 
     // set active item state
     const getCollapse = (menu) => {

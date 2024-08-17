@@ -11,9 +11,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.7",
+    "@mui/styles": "^5.16.7",
+    "@mui/system": "^5.16.7",
     "antd": "^5.20.0",
     "apexcharts": "^3.52.0",
     "axios": "^1.7.3",
