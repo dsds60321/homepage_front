@@ -35,9 +35,16 @@ const TennisTable = ({ data }) => {
                 field: 'IMGURL',
                 width: '10%',
                 render: (item) => (
-                    <Button size="large" href={item.IMGURL} target="_blank">
-                        <DownloadOutlined />
-                    </Button>
+                    <img
+                        src={item.IMGURL}
+                        alt="Tennis Court"
+                        style={{
+                            width: '100px',
+                            height: 'auto',
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => window.open(item.IMGURL, '_blank')}
+                    />
                 ),
             },
         ],
