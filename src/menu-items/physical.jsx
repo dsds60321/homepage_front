@@ -1,27 +1,27 @@
 // assets
 
 // assets
-import { ChromeOutlined, QuestionOutlined } from '@ant-design/icons';
+import { TrophyOutlined, QuestionOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-    ChromeOutlined,
+    TrophyOutlined,
     QuestionOutlined,
 };
 
 // ==============================|| MENU ITEMS - SAMPLE PAGE & DOCUMENTATION ||============================== //
 
 const physical = {
-    id: '체육시설',
-    title: '체육시설',
+    id: 'Exercise',
+    title: 'Exercise',
     type: 'group',
     children: [
         {
-            id: '테니스',
-            title: '테니스',
+            id: 'Tennis',
+            title: 'Tennis',
             type: 'item',
             url: '/physical/reservation',
-            icon: icons.ChromeOutlined,
+            icon: icons.TrophyOutlined,
         },
     ],
 };

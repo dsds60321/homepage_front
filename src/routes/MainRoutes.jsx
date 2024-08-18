@@ -7,18 +7,23 @@ const Tennis = Loadable(
 
 import DashboardDefault from '@pages/dashboard/index.jsx';
 import Layout from '@layout/index.jsx';
+import { PagingProvider } from '@/context/Paging.jsx';
 
 export const routes = {
     path: '/',
     element: <Layout />,
     children: [
         {
-            path: '/',
+            path: 'dashboard',
             element: <DashboardDefault />,
         },
         {
             path: 'physical/reservation',
-            element: <Tennis />,
+            element: (
+                <PagingProvider>
+                    <Tennis />
+                </PagingProvider>
+            ),
         },
     ],
 };

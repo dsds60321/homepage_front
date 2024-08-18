@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#f2f2f2',
     },
     badge: {
-        margin: '0 28px',
+        margin: '0 30px',
     },
     modalButton: {
         marginTop: theme.spacing(2),

@@ -7,7 +7,6 @@ const Paging = ({ pageCount, currentPage, setCurrentPage }) => {
     const isSmallScreen = useMediaQuery('(max-width:600px)');
 
     const handlePageClick = (event) => {
-        console.log(event);
         setCurrentPage(event.selected); // 현재 페이지 업데이트
     };
 
@@ -61,6 +60,7 @@ const Paging = ({ pageCount, currentPage, setCurrentPage }) => {
             breakClassName={'page-item'}
             breakLinkClassName={'page-link'}
             activeClassName={'active'} // 활성 페이지 클래스를 정의
+            forcePage={currentPage} // 현재 페이지를 반영
         />
     );
 };
