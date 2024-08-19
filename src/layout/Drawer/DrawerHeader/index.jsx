@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
-
-// material-ui
 import { styled, useTheme } from '@mui/material/styles';
-
-// project import
+import { useNavigate } from 'react-router-dom'; // useNavigate 임포트
 import DrawerHeaderStyled from './DrawerHeaderStyled';
 import home from '@/assets/images/home.png';
 
@@ -21,10 +18,11 @@ const BannerContainer = styled('div')(({ theme }) => ({
 
 export default function DrawerHeader({ open }) {
     const theme = useTheme();
+    const navigate = useNavigate();
 
     return (
         <DrawerHeaderStyled theme={theme} open={!!open}>
-            <BannerContainer />
+            <BannerContainer onClick={() => navigate('/dashboard')} />
         </DrawerHeaderStyled>
     );
 }

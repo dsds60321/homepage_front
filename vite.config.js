@@ -2,12 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
-// https://vitejs.dev/config/
+// Vite 설정
 export default defineConfig({
+    base: './', // 빌드된 파일의 기본 경로 설정
     plugins: [react()],
     server: {
         port: 3000,
         open: true,
+    },
+    build: {
+        outDir: path.resolve(__dirname, 'dist'), // Spring 프로젝트의 정적 리소스 폴더로 설정
     },
     resolve: {
         alias: {
