@@ -20,7 +20,7 @@ const physical = {
             id: 'Tennis',
             title: 'Tennis',
             type: 'item',
-            url: '/physical/reservation',
+            url: '/tennis',
             icon: icons.TrophyOutlined,
         },
     ],
