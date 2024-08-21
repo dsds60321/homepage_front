@@ -1,13 +1,17 @@
 import React, { useMemo } from 'react';
 import Badge from '@mui/material/Badge';
 import Button from '@mui/material/Button';
-import { DownloadOutlined } from '@ant-design/icons';
 import DetailTable from '@components/table/DetailTable.jsx';
 
 const TennisTable = ({ data }) => {
     const columns = useMemo(
         () => [
-            { label: '결제 상태', field: 'PAYATNM', width: '10%' },
+            {
+                label: '결제 상태',
+                field: 'PAYATNM',
+                width: '10%',
+                isMobileView: false,
+            },
             {
                 label: '예약 상태',
                 field: 'SVCSTATNM',
@@ -29,11 +33,16 @@ const TennisTable = ({ data }) => {
                     </Button>
                 ),
             },
-            { label: '장소 이름', field: 'PLACENM', width: '15%' },
+            {
+                label: '장소 이름',
+                field: 'PLACENM',
+                width: '15%',
+            },
             {
                 label: '테니스장 사진',
                 field: 'IMGURL',
                 width: '10%',
+                isMobileView: false,
                 render: (item) => (
                     <img
                         src={item.IMGURL}

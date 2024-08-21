@@ -9,20 +9,21 @@ import {
     TableRow,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import Index from '@pages/physical/tennis/modal/index.jsx';
+import TennisModal from '@pages/physical/tennis/modal/TennisModal.jsx';
 
 const useStyles = makeStyles((theme) => ({
     tableContainer: {
-        maxHeight: '80%',
-        overflowY: 'auto',
+        maxWidth: '100%', // 최대 너비를 100%로 설정
+        overflowX: 'auto', // 수평 스크롤 활성화
         border: '1px solid #ccc',
     },
     table: {
-        width: '100%',
+        width: 'auto', // width를 'auto'로 설정
+        minWidth: '500px', // 최소 너비 설정
         tableLayout: 'fixed',
     },
     tableCell: {
-        padding: theme.spacing(1),
+        padding: '2px',
         textAlign: 'left',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -64,44 +65,55 @@ const DetailTable = ({ data, columns }) => {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow className={classes.tableHead}>
-                            {columns.map((column, index) => (
-                                <TableCell
-                                    key={index}
-                                    className={classes.tableCell}
-                                    style={{ width: column.width || 'auto' }}
-                                >
-                                    {column.label}
-                                </TableCell>
-                            ))}
+                            {columns.map(
+                                (column, index) =>
+                                    column.isMobileView !== false && (
+                                        <TableCell
+                                            key={index}
+                                            className={classes.tableCell}
+                                            style={{
+                                                width: column.width || 'auto',
+                                            }}
+                                        >
+                                            {column.label}
+                                        </TableCell>
+                                    ),
+                            )}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {data.map((item, index) => (
                             <TableRow key={index}>
-                                {columns.map((column, colIndex) => (
-                                    <TableCell
-                                        key={colIndex}
-                                        className={classes.tableCell}
-                                        onClick={
-                                            column.onClick
-                                                ? () => column.onClick(item)
-                                                : undefined
-                                        }
-                                    >
-                                        {column.render
-                                            ? column.render(
-                                                  item,
-                                                  handleCellClick,
-                                              )
-                                            : item[column.field]}
-                                    </TableCell>
-                                ))}
+                                {columns.map(
+                                    (column, colIndex) =>
+                                        column.isMobileView !== false && (
+                                            <TableCell
+                                                key={colIndex}
+                                                className={classes.tableCell}
+                                                onClick={
+                                                    column.onClick
+                                                        ? () =>
+                                                              column.onClick(
+                                                                  item,
+                                                              )
+                                                        : undefined
+                                                }
+                                            >
+                                                {column.render
+                                                    ? column.render(
+                                                          item,
+                                                          handleCellClick,
+                                                      )
+                                                    : item[column.field]}
+                                            </TableCell>
+                                        ),
+                                )}
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Index
+            <TennisModal
                 open={modalOpen}
                 onClose={handleCloseModal}
                 item={selectedItem}

@@ -2,7 +2,7 @@
 import React from 'react';
 import DetailModal from '@components/modal/DetailModal.jsx';
 
-const Index = ({ open, onClose, item }) => {
+const TennisModal = ({ open, onClose, item }) => {
     if (!item) {
         return undefined;
     }
@@ -55,4 +55,4 @@ const Index = ({ open, onClose, item }) => {
     );
 };
 
-export default Index;
+export default TennisModal;
