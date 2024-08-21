@@ -18,6 +18,7 @@ const TennisTable = ({ data }) => {
                 width: '15%',
                 render: (item) => (
                     <Badge
+                        style={{ marginRight: '7px' }}
                         badgeContent={item.SVCSTATNM}
                         color={item.SVCSTATNM === '접수중' ? 'info' : 'error'}
                     />
