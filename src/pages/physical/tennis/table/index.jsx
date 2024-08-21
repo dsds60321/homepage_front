@@ -18,7 +18,6 @@ const TennisTable = ({ data }) => {
                 width: '15%',
                 render: (item) => (
                     <Badge
-                        style={{ marginLeft: '20px' }}
                         badgeContent={item.SVCSTATNM}
                         color={item.SVCSTATNM === '접수중' ? 'info' : 'error'}
                     />
@@ -42,7 +41,6 @@ const TennisTable = ({ data }) => {
                 label: '테니스장 사진',
                 field: 'IMGURL',
                 width: '10%',
-                isMobileView: false,
                 render: (item) => (
                     <img
                         src={item.IMGURL}

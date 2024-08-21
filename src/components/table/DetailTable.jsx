@@ -24,13 +24,14 @@ const useStyles = makeStyles((theme) => ({
     },
     tableCell: {
         padding: '2px',
-        textAlign: 'left',
+        textAlign: 'center',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         maxWidth: '100%',
     },
     tableHead: {
+        textAlign: 'center',
         backgroundColor: '#f2f2f2',
     },
     badge: {
