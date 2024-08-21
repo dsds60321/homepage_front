@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Paper,
     Table,
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     table: {
         width: 'auto', // width를 'auto'로 설정
-        minWidth: '500px', // 최소 너비 설정
+        minWidth: '100%', // 최소 너비 설정
         tableLayout: 'fixed',
     },
     tableCell: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-        maxWidth: '150px',
+        maxWidth: '100%',
     },
     tableHead: {
         backgroundColor: '#f2f2f2',
@@ -44,7 +44,21 @@ const useStyles = makeStyles((theme) => ({
 const DetailTable = ({ data, columns }) => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const classes = useStyles();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768); // 768px 이하를 모바일로 간주
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // 초기 체크
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleCellClick = (item) => {
         setSelectedItem(item);
@@ -65,9 +79,14 @@ const DetailTable = ({ data, columns }) => {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow className={classes.tableHead}>
-                            {columns.map(
-                                (column, index) =>
-                                    column.isMobileView !== false && (
+                            {columns.map((column, index) => {
+                                // 모바일 뷰에서 열 렌더링 조건 수정
+                                const shouldRender =
+                                    (isMobile &&
+                                        column.isMobileView !== false) ||
+                                    (!isMobile && column.isMobileView !== true);
+                                return (
+                                    shouldRender && (
                                         <TableCell
                                             key={index}
                                             className={classes.tableCell}
@@ -77,16 +96,23 @@ const DetailTable = ({ data, columns }) => {
                                         >
                                             {column.label}
                                         </TableCell>
-                                    ),
-                            )}
+                                    )
+                                );
+                            })}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {data.map((item, index) => (
                             <TableRow key={index}>
-                                {columns.map(
-                                    (column, colIndex) =>
-                                        column.isMobileView !== false && (
+                                {columns.map((column, colIndex) => {
+                                    // 모바일 뷰에서 열 렌더링 조건 수정
+                                    const shouldRender =
+                                        (isMobile &&
+                                            column.isMobileView !== false) ||
+                                        (!isMobile &&
+                                            column.isMobileView !== true);
+                                    return (
+                                        shouldRender && (
                                             <TableCell
                                                 key={colIndex}
                                                 className={classes.tableCell}
@@ -106,8 +132,9 @@ const DetailTable = ({ data, columns }) => {
                                                       )
                                                     : item[column.field]}
                                             </TableCell>
-                                        ),
-                                )}
+                                        )
+                                    );
+                                })}
                             </TableRow>
                         ))}
                     </TableBody>
