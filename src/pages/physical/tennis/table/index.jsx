@@ -3,7 +3,7 @@ import Badge from '@mui/material/Badge';
 import Button from '@mui/material/Button';
 import DetailTable from '@components/table/DetailTable.jsx';
 
-const TennisTable = ({ data }) => {
+const TennisTable = ({ data, handleCellClick }) => {
     const columns = useMemo(
         () => [
             {
@@ -27,7 +27,7 @@ const TennisTable = ({ data }) => {
             {
                 label: '이름',
                 field: 'SVCNM',
-                render: (item, handleCellClick) => (
+                render: (item) => (
                     <Button onClick={() => handleCellClick(item)}>
                         {item.SVCNM}
                     </Button>

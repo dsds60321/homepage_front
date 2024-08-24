@@ -13,6 +13,7 @@ export const useInput = (initialData) => {
     return [value, handler];
 };
 
+// true or false
 export const useToggle = (initialData) => {
     const [value, setValue] = useState(initialData);
 

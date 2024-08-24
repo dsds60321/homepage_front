@@ -1,4 +1,3 @@
-// DetailModal.js
 import React from 'react';
 import {
     Button,
@@ -110,7 +109,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-// Main DetailModal Component
 const DetailModal = ({ open, onClose, title, columns, rows }) => {
     return (
         <StyledDialog open={open} onClose={onClose}>

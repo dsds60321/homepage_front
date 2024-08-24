@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Paper,
     Table,
@@ -9,7 +9,6 @@ import {
     TableRow,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import TennisModal from '@pages/physical/tennis/modal/TennisModal.jsx';
 
 const useStyles = makeStyles((theme) => ({
     tableContainer: {
@@ -141,11 +140,6 @@ const DetailTable = ({ data, columns }) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <TennisModal
-                open={modalOpen}
-                onClose={handleCloseModal}
-                item={selectedItem}
-            />
         </>
     );
 };
