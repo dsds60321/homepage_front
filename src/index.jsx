@@ -10,9 +10,15 @@ import 'slick-carousel/slick/slick-theme.css';
 
 // project import
 import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // ==============================|| MAIN - REACT DOM RENDER ||============================== //
+const queryClient = new QueryClient();
 
-root.render(<App />);
+root.render(
+    <QueryClientProvider client={queryClient}>
+        <App />
+    </QueryClientProvider>,
+);

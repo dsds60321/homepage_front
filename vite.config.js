@@ -6,6 +6,9 @@ import path from 'path';
 export default defineConfig({
     base: './', // 빌드된 파일의 기본 경로 설정
     plugins: [react()],
+    define: {
+        'process.env': process.env,
+    },
     server: {
         port: 3000,
         open: true,

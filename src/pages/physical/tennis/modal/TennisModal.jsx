@@ -1,13 +1,38 @@
-// ItemDetailModal.js
 import React from 'react';
 import DetailModal from '@components/modal/DetailModal.jsx';
 import useFetch from '@/hooks/useFetch.jsx';
+import Loading from '@components/loading/Loading.jsx';
+
+// Helper function to extract available dates
+const getAvailableDates = (data) => {
+    if (!data || !Array.isArray(data)) return [];
+
+    // Flatten the array to find available dates
+    return data
+        .filter((dateObj) => Object.values(dateObj)[0]) // Filter only the objects with true values
+        .map((dateObj) => Object.keys(dateObj)[0]); // Extract date strin
+};
 
 const TennisModal = ({ open, onClose, reservation }) => {
-    // item을 reservation으로 변경
     if (!reservation) {
         return null;
     }
+
+    const { data, loading, error } = useFetch('/tennis/booking', 'POST', {
+        url: reservation.SVCURL,
+    });
+
+    if (loading) return <Loading />;
+    if (error)
+        return <div style={{ color: 'red' }}>오류 발생: {error.message}</div>;
+
+    // Extract available dates
+    const availableDates = getAvailableDates(data.data);
+
+    // Convert available dates into a suitable format for the calendar
+    const formattedDates = availableDates.map(
+        (date) => new Date(date.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')),
+    );
 
     const columns = [
         {
@@ -55,6 +80,11 @@ const TennisModal = ({ open, onClose, reservation }) => {
                 </a>
             ),
         },
+        {
+            label: '예약 가능 날짜',
+            value: availableDates.join(', '), // Add the dates directly here
+            type: 'date', // Indicate that this field should render a calendar
+        },
     ];
 
     return (
@@ -63,8 +93,9 @@ const TennisModal = ({ open, onClose, reservation }) => {
             onClose={onClose}
             title="상세 정보"
             columns={columns}
-            rows={rows}
+            rows={rows} // Pass the rows with the date field
         />
     );
 };
+
 export default TennisModal;

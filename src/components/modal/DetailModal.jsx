@@ -11,8 +11,12 @@ import {
     TableCell,
     TableContainer,
     TableRow,
+    TextField,
 } from '@mui/material';
-import { styled } from '@mui/system';
+import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { styled } from '@mui/material/styles';
+import { ko } from 'date-fns/locale';
 
 // Styled Components
 const StyledDialog = styled(Dialog)(({ theme }) => ({
@@ -110,6 +114,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const DetailModal = ({ open, onClose, title, columns, rows }) => {
+    const dateRow = rows.find((row) => row.type === 'date');
+    const availableDates = dateRow ? dateRow.value.split(', ') : [];
+
     return (
         <StyledDialog open={open} onClose={onClose}>
             <StyledDialogTitle>{title}</StyledDialogTitle>
@@ -131,6 +138,35 @@ const DetailModal = ({ open, onClose, title, columns, rows }) => {
                         </TableBody>
                     </Table>
                 </StyledTableContainer>
+
+                {availableDates.length > 0 && (
+                    <LocalizationProvider
+                        dateAdapter={AdapterDateFns}
+                        locale={ko}
+                    >
+                        <StaticDatePicker
+                            displayStaticWrapperAs={'desktop'}
+                            openTo="day"
+                            shouldDisableDate={(date) => {
+                                // 시간대 오프셋을 적용하여 한국 시간으로 변환
+                                let offset = date.getTimezoneOffset() * 60000; // ms 단위로 변환
+                                let dateOffset = new Date(
+                                    date.getTime() - offset,
+                                );
+
+                                // 한국 시간으로 날짜를 'YYYYMMDD' 형식으로 변환
+                                const formattedDate = dateOffset
+                                    .toISOString()
+                                    .split('T')[0]
+                                    .replace(/-/g, '');
+
+                                // availableDates에 포함되어 있는지 체크
+                                return !availableDates.includes(formattedDate);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+                )}
             </StyledDialogContent>
             <StyledDialogActions>
                 <StyledButton onClick={onClose}>닫기</StyledButton>

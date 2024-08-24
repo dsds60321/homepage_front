@@ -7,7 +7,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactMarkdown from 'react-markdown'; // react-markdown 임포트
 import { dashboardInfo } from '@pages/dashboard/dashboardInfo.js';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
     marginBottom: theme.spacing(2), // 각 Accordion 간의 여백
