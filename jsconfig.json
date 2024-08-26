@@ -6,6 +6,7 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@api/*": ["src/api/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@layout/*": ["src/layout/*"],
       "@pages/*": ["src/pages/*"],
       "@routes/*": ["src/routes/*"],

@@ -20,6 +20,7 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@api': path.resolve(__dirname, 'src/api'),
+            '@hooks': path.resolve(__dirname, 'src/hooks'),
             '@components': path.resolve(__dirname, 'src/components'),
             '@layout': path.resolve(__dirname, 'src/layout'),
             '@pages': path.resolve(__dirname, 'src/pages'),
