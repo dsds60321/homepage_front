@@ -9,10 +9,10 @@ import {
     Select,
     TextField,
 } from '@mui/material';
-import TennisTable from '@pages/physical/tennis/table/index.jsx';
+import TennisTable from '@pages/Physical/Tennis/table/index.jsx';
 import { useInput } from '@/hooks/useHooks.jsx';
 import { usePaging } from '@/context/Paging.jsx';
-import TennisModal from '@pages/physical/tennis/modal/TennisModal.jsx';
+import TennisModal from '@pages/Physical/Tennis/modal/TennisModal.jsx';
 
 const ReservationFilter = ({
     searchTerm,

@@ -1,17 +1,17 @@
 import { lazy } from 'react';
 import Loadable from '@components/Loadable';
-import DashboardDefault from '@pages/dashboard/index.jsx';
+import DashboardDefault from '@pages/Dashboard/index.jsx';
 import Layout from '@layout/index.jsx';
 import { PagingProvider } from '@/context/Paging.jsx';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@hooks/useAuth.jsx';
 
 const Tennis = Loadable(
-    lazy(() => import('@pages/physical/tennis/Tennis.jsx')),
+    lazy(() => import('@pages/Physical/Tennis/Tennis.jsx')),
 );
 
 const Login = Loadable(
-    lazy(() => import('@pages/auth/Login.jsx')), // Login 컴포넌트 import
+    lazy(() => import('@pages/Auth/Login.jsx')), // Login 컴포넌트 import
 );
 
 const PrivateRoute = ({ children }) => {
@@ -44,7 +44,7 @@ export const routes = {
             ),
         },
         {
-            path: '/auth/login',
+            path: 'auth/login',
             element: <Login />, // 로그인 경로 설정
         },
     ],

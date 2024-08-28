@@ -4,7 +4,7 @@ import path from 'path';
 
 // Vite 설정
 export default defineConfig({
-    base: './', // 빌드된 파일의 기본 경로 설정
+    base: '/', // 빌드된 파일의 기본 경로 설정
     plugins: [react()],
     define: {
         'process.env': process.env,
@@ -18,15 +18,15 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, 'src'),
-            '@api': path.resolve(__dirname, 'src/api'),
-            '@hooks': path.resolve(__dirname, 'src/hooks'),
-            '@components': path.resolve(__dirname, 'src/components'),
-            '@layout': path.resolve(__dirname, 'src/layout'),
-            '@pages': path.resolve(__dirname, 'src/pages'),
-            '@routes': path.resolve(__dirname, 'src/routes'),
-            '@themes': path.resolve(__dirname, 'src/themes'),
-            '@utils': path.resolve(__dirname, 'src/utils'),
+            '@': path.resolve(__dirname, '/src'),
+            '@api': path.resolve(__dirname, '/src/api'),
+            '@hooks': path.resolve(__dirname, '/src/hooks'),
+            '@components': path.resolve(__dirname, '/src/components'),
+            '@layout': path.resolve(__dirname, '/src/layout'),
+            '@pages': path.resolve(__dirname, '/src/pages'),
+            '@routes': path.resolve(__dirname, '/src/routes'),
+            '@themes': path.resolve(__dirname, '/src/themes'),
+            '@utils': path.resolve(__dirname, '/src/utils'),
         },
     },
 });

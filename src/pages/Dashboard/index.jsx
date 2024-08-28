@@ -6,7 +6,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactMarkdown from 'react-markdown'; // react-markdown 임포트
-import { dashboardInfo } from '@pages/dashboard/dashboardInfo.js';
+import { dashboardInfo } from '@pages/Dashboard/dashboardInfo.js';
 import { styled } from '@mui/material/styles';
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
