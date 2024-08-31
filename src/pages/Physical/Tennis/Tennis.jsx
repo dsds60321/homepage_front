@@ -88,12 +88,16 @@ const filterReservations = (
 
 export default function Tennis() {
     const [selectedReservation, setSelectedReservation] = useState(null);
-    const { data, loading, error } = useFetch('/tennis/reservation', 'POST');
+    const { data, loading, error } = useFetch(
+        '/tennis/reservation',
+        'POST',
+        null,
+    );
     const { currentPage, setCurrentPage, calculatePagination } = usePaging();
     const [searchTerm, setSearchTerm] = useInput('');
     const [reservationStatus, setReservationStatus] = useInput('');
     const [paymentStatus, setPaymentStatus] = useInput('');
-    const reservations = data?.data || [];
+    const reservations = data?.result || [];
 
     if (loading) return <Loading />;
     if (error)

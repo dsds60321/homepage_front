@@ -17,12 +17,12 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        login.mutate(credentials);
+        login({ role: 'USER', ...credentials });
     };
 
     const handleGuestLogin = () => {
         // 게스트 로그인 처리 로직 (예시)
-        login.mutate({ username: 'guest', password: 'guest123' });
+        login({ role: 'GUEST' });
     };
 
     return (
