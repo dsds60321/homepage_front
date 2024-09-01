@@ -29,6 +29,7 @@ import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
 import SettingOutlined from '@ant-design/icons/SettingOutlined';
 import UserOutlined from '@ant-design/icons/UserOutlined';
 import avatar1 from '@/assets/images/users/avatar-1.png';
+import { useAuth } from '@hooks/useAuth.jsx';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -55,6 +56,7 @@ function a11yProps(index) {
 // ==============================|| HEADER CONTENT - PROFILE ||============================== //
 
 export default function Profile() {
+    const { logout, user } = useAuth();
     const theme = useTheme();
 
     const anchorRef = useRef(null);
@@ -78,6 +80,8 @@ export default function Profile() {
 
     const iconBackColorOpen = 'grey.100';
 
+    // user 정보
+
     return (
         <Box sx={{ flexShrink: 0, ml: 0.75 }}>
             <ButtonBase
@@ -95,7 +99,7 @@ export default function Profile() {
                 ref={anchorRef}
                 aria-controls={open ? 'profile-grow' : undefined}
                 aria-haspopup="true"
-                // onClick={handleToggle}
+                onClick={handleToggle}
             >
                 <Stack
                     direction="row"
@@ -106,9 +110,9 @@ export default function Profile() {
                     <Avatar alt="profile user" src={avatar1} size="sm" />
                     <Typography
                         variant="subtitle1"
-                        sx={{ textTransform: 'capitalize' }}
+                        sx={{ textTransform: 'none' }}
                     >
-                        Guest
+                        {user ? user.userId : ''}
                     </Typography>
                 </Stack>
             </ButtonBase>
@@ -173,19 +177,26 @@ export default function Profile() {
                                                     />
                                                     <Stack>
                                                         <Typography variant="h6">
-                                                            John Doe
+                                                            {user
+                                                                ? user.userId
+                                                                : 'Guest'}
                                                         </Typography>
                                                         <Typography
                                                             variant="body2"
                                                             color="text.secondary"
                                                         >
-                                                            UI/UX Designer
+                                                            {user
+                                                                ? user.nick
+                                                                : 'Guest'}
                                                         </Typography>
                                                     </Stack>
                                                 </Stack>
                                             </Grid>
                                             <Grid item>
-                                                <Tooltip title="Logout">
+                                                <Tooltip
+                                                    title="Logout"
+                                                    onClick={logout}
+                                                >
                                                     <IconButton
                                                         size="large"
                                                         sx={{
@@ -230,25 +241,25 @@ export default function Profile() {
                                                 label="Profile"
                                                 {...a11yProps(0)}
                                             />
-                                            <Tab
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'row',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    textTransform: 'capitalize',
-                                                }}
-                                                icon={
-                                                    <SettingOutlined
-                                                        style={{
-                                                            marginBottom: 0,
-                                                            marginRight: '10px',
-                                                        }}
-                                                    />
-                                                }
-                                                label="Setting"
-                                                {...a11yProps(1)}
-                                            />
+                                            {/*<Tab*/}
+                                            {/*    sx={{*/}
+                                            {/*        display: 'flex',*/}
+                                            {/*        flexDirection: 'row',*/}
+                                            {/*        justifyContent: 'center',*/}
+                                            {/*        alignItems: 'center',*/}
+                                            {/*        textTransform: 'capitalize',*/}
+                                            {/*    }}*/}
+                                            {/*    icon={*/}
+                                            {/*        <SettingOutlined*/}
+                                            {/*            style={{*/}
+                                            {/*                marginBottom: 0,*/}
+                                            {/*                marginRight: '10px',*/}
+                                            {/*            }}*/}
+                                            {/*        />*/}
+                                            {/*    }*/}
+                                            {/*    label="Setting"*/}
+                                            {/*    {...a11yProps(1)}*/}
+                                            {/*/>*/}
                                         </Tabs>
                                     </Box>
                                     <TabPanel

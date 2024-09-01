@@ -43,6 +43,15 @@ export const useAuth = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    // 로그아웃
+    const logout = () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        setUser(null);
+        setIsAuthenticated(false);
+        navigate('/auth/login'); // 로그아웃 후 로그인 페이지로 이동
+    };
+
     useEffect(() => {
         const checkAuth = async () => {
             const accessToken = localStorage.getItem('accessToken');
@@ -118,5 +127,6 @@ export const useAuth = () => {
         isLoading,
         isAuthenticated,
         login: loginMutation.mutate,
+        logout,
     };
 };

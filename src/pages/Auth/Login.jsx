@@ -22,7 +22,7 @@ const Login = () => {
 
     const handleGuestLogin = () => {
         // 게스트 로그인 처리 로직 (예시)
-        login({ role: 'GUEST' });
+        login({ role: 'GUEST', username: 'guest', password: '12345' });
     };
 
     return (

@@ -22,7 +22,7 @@ export default function DrawerHeader({ open }) {
 
     return (
         <DrawerHeaderStyled theme={theme} open={!!open}>
-            <BannerContainer onClick={() => navigate('/dashboard')} />
+            <BannerContainer onClick={() => navigate('/')} />
         </DrawerHeaderStyled>
     );
 }

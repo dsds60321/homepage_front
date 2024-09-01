@@ -27,7 +27,7 @@ const TennisModal = ({ open, onClose, reservation }) => {
         return <div style={{ color: 'red' }}>오류 발생: {error.message}</div>;
 
     // Extract available dates
-    const availableDates = getAvailableDates(data.data);
+    const availableDates = getAvailableDates(data.result);
 
     // Convert available dates into a suitable format for the calendar
     const formattedDates = availableDates.map(
@@ -82,8 +82,8 @@ const TennisModal = ({ open, onClose, reservation }) => {
         },
         {
             label: '예약 가능 날짜',
-            value: availableDates.join(', '), // Add the dates directly here
-            type: 'date', // Indicate that this field should render a calendar
+            value: availableDates.join(', '),
+            type: 'date',
         },
     ];
 

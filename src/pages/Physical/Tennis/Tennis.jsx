@@ -88,11 +88,7 @@ const filterReservations = (
 
 export default function Tennis() {
     const [selectedReservation, setSelectedReservation] = useState(null);
-    const { data, loading, error } = useFetch(
-        '/tennis/reservation',
-        'POST',
-        null,
-    );
+    const { data, loading, error } = useFetch('/tennis/reservation', 'POST');
     const { currentPage, setCurrentPage, calculatePagination } = usePaging();
     const [searchTerm, setSearchTerm] = useInput('');
     const [reservationStatus, setReservationStatus] = useInput('');
