@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Grid } from '@mui/material';
 import { useAuth } from '@hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const { login } = useAuth();
     const [credentials, setCredentials] = useState({
         username: '',
@@ -75,7 +77,7 @@ const Login = () => {
                             게스트로 로그인
                         </Button>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={6} onClick={() => navigate('/auth/sign-up')}>
                         <Button variant="text" color="primary" fullWidth>
                             회원가입
                         </Button>

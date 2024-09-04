@@ -39,6 +39,7 @@
     "react-apexcharts": "^1.4.1",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
     "react-markdown": "^9.0.1",
     "react-number-format": "^5.4.0",
     "react-paginate": "^8.2.0",
