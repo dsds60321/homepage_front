@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const SignupSuccess = ({ username }) => {
+    let navigate = useNavigate();
     return (
         <Box
             sx={{
@@ -22,7 +24,7 @@ const SignupSuccess = ({ username }) => {
             <Button
                 variant="contained"
                 color="success"
-                onClick={() => (window.location.href = '/login')}
+                onClick={() => navigate('/auth/login')}
                 sx={{
                     marginTop: '15px',
                 }}
